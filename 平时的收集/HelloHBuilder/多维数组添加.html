@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<table data-id='1' border="1">
+			<tr data-id="1a"></tr>
+			<tr data-id="1a"></tr>
+		</table>
+		<table data-id='2'>
+			<tr data-id="2b"></tr>
+			<tr data-id="2b"></tr>
+			<tr data-id="2b"></tr>
+			<tr data-id="2b"></tr>
+		</table>
+		<table data-id='3'>
+			<tr data-id="3c"></tr>
+			<tr data-id="3c"></tr>
+			<tr data-id="3c"></tr>
+			<tr data-id="3c"></tr>
+			<tr data-id="3c"></tr>
+		</table>
+		<table data-id='4'>
+			<tr data-id="4d"></tr>
+			<tr data-id="4d"></tr>
+			<tr data-id="4d"></tr>
+			<tr data-id="4d"></tr>
+			<tr data-id="4d"></tr>
+			<tr data-id="4d"></tr>
+			<tr data-id="4d"></tr>
+			<tr data-id="4d"></tr>
+		</table>
+		<table data-id='5'>
+			<tr data-id="5d"></tr>
+			<tr data-id="5d"></tr>
+			<tr data-id="5d"></tr>
+			<tr data-id="5d"></tr>
+			<tr data-id="5d"></tr>
+			<tr data-id="5d"></tr>
+		</table>
+
+		<script src="jquery-2.1.0.js"></script>
+		<script>
+			onload = function() {
+				var tables = [].slice.call($('table'), 0);
+				var result = tables.map(function(table, index) { /* 接收两个参数 当前元素合集  索引 */
+					var o = {};
+					var trs = [].slice.call(table.rows, 0);
+					o[$(table).data('id')] = trs.map(function(tr, index) {
+						var o = {};
+						o[index] = $(tr).data('id');
+						return o;
+					});
+					return o;
+				});
+				console.log(result);
+//				console.log(JSON.stringify(result))
+			}
+		</script>
+	</body>
+
+</html>

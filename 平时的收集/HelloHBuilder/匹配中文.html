@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input id="txt" type="text" />
+		<script>
+			var txt = document.getElementById('txt');
+			txt.onkeyup = function(e) {
+				var str = this.value;
+					var b = getBytes(str);
+					console.log(b);
+				// 将 中文替换成2个字符  如果10/2 == 5 个字 && 大于2 && 小于4   else  6位字母数字下划线 
+		console.log(((b / 2 == str.length && str.length >= 2  && str.length <= 4) || /^[_a-zA-Z0-9]{6}$/.test(str)))
+			}
+			/*验证中文*/
+			function getBytes(str) {
+				return str.replace(/[^x00-xFF]/g, '**').length;
+			}
+			
+			
+			var strs1 = 'ＱＷＥＲＴＹ请问十大ＱＷＥＲＴＹ请问十大ＱＷＥＲＴＹ请问十大。．';
+			var strs2 = 'QWERTY请问十大QWERTY请问十大QWERTY请问十大QWERTY请问十大。.';
+			console.log(strs1.length);
+			console.log(strs2.length);
+			
+		
+			
+		</script>
+	</body>
+
+</html>

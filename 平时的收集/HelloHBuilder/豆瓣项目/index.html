@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+<script src="../jquery-2.1.0.js"></script>
+		<script>
+		window.onload=function(){
+			var Ourl='http://www.weather.com.cn/data/sk/101010100.html?callback=abc';
+			var Oscr = document.createElement('script'),
+				Obody = document.getElementsByTagName('body')[0];
+				
+				Oscr.src = Ourl;
+				Obody.appendChild(Oscr);
+//				if(typeof callback == 'function'){
+				var abc	=function (data){
+					console.log(data);
+					alert(data)
+				};
+					abc();
+//				}
+				
+		}()
+</script>
+
+</html>

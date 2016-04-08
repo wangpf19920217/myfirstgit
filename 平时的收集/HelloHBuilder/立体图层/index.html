@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+	<meta charset="UTF-8" />      
+    <title>多边形制作 | I♥∆ </title>
+ <script type="text/javascript" src="js/jquery.js"></script>              
+ <script type="text/javascript" src="js/jquery-ui.js"></script>              
+ <script type="text/javascript" src="js/main.js"></script>
+ <script type="text/javascript" src="js/triangulatr.js"></script>
+ <script type="text/javascript" src="js/interface.js"></script>
+ <script type="text/javascript" src="js/base64.js"></script>
+
+<link rel="stylesheet" type="text/css" media="screen" href="css/styles.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="css/jquery-ui-1.8.9.custom.css" />
+  </head>
+  <body onload="init();">
+    <div id="basicOps">
+	<div id="trBox" class="button"><div id="transparencySlider"></div></div>
+	<div class="button"><a href="#" id="svgSaver">Export</a> to SVG<span id="svgFile"></span></div>
+	<div id="recycleBox" class="button"><a href="#" title="Delete all vertices" id="recycler">Delete all vertices</a></div>
+	<div class="button">Add 25 vertices: <a href="#" id="randomGenerator">成生(多点几我次效果会更好)</a></div>
+</div>
+	
+	</div>
+<div class="cleaner"></div>
+<div id="canvasContainer">
+    <canvas id="sourceImg" width="600" height="600"></canvas>    
+    <canvas id="canvas" width="600" height="600"></canvas>    
+</div>    
+<div class="cleaner"></div>	
+	
+<div id="wrapper">
+<div id="intro">
+<header id="header">
+<img src="i/logo.png" alt="I♥∆"/>
+<h1>Simple web-based tool that lets you convert bitmap images to the beautiful artworks</h1></header>
+<div id="holder" class="normal">
+	把图拖动到这里，不要拖错地方啦！<br>
+	Drop your bitmap here
+</div>
+
+	
+</div>	
+</div>
+  
+
+  <a href="#" id="svgSaver"></a>
+  </body>
+</html>

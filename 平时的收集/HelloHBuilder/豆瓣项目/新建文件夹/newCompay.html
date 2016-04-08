@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>content</title>
+    <!--//确保移动端网页在手机上的等比例为1:1-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+       *{
+           margin: 0;
+           padding: 0;
+           font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+           font-size: 1.3rem;
+           -webkit-text-size-adjust:none;
+       }
+        .newConternet{
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            margin: 0 0 5rem 0;
+        }
+       .newConternet .newHeader{
+           height: 3rem;
+           background: #33cccc url("../imgs/left.png") no-repeat 15px top ;
+           background-size: 11px 19px;
+           text-align: center;
+           color: white;
+           font-size: 1.8rem;
+       }
+       .newContent{
+           background-color: #fff;
+           box-shadow: 3px 0 5px #c9c9c9;
+           width: 8rem;
+           float: left;
+       }
+       .newContent ul li{
+           width: 100%;
+           height: 4rem;
+           text-align: center;
+           line-height: 4rem;
+           color: #282828;
+           border-bottom: 1px solid #c9c9c9;
+           cursor: pointer;
+           list-style: none;
+       }
+       .newContent  .active{
+           color: #fff;
+           background-color: #8ddcdb;
+       }
+       .newFooter{
+           margin-left: 8rem;
+       }
+       .newFooter div{
+           display: none;
+       }
+       .newList_tab{
+           background-color: #f2f2f2;
+       }
+       .newList_tab .headerList{
+           height: 3rem;
+           line-height: 3rem;
+           background-color: #8ddcdb;
+           color: #009999;
+           text-align: left;
+           font-size: 1rem;
+       }
+       .newList_tab .headerList em{
+           display: inline-block;
+           width: 15px;
+       }
+       .newList_tab .data-list li{
+           list-style: none;
+           height: 7.5rem;
+           background-color: #fff;
+           margin: 0 0 1rem 0;
+       }
+       .newList_tab .data-icon{
+           height: 6rem;
+           width: 6rem;
+           padding:.8rem 1rem 1rem 1rem;
+           float: left;
+       }
+       .newList_tab .newFloat p:nth-child(1){
+           padding-top: 1rem;
+       }
+       .newList_tab .newFloat p .newMargin{
+           margin-left: 2rem;
+       }
+       .newList_tab .newFloat p span{
+           display: inline-block;
+           height: 2rem;
+           line-height: 2rem;
+       }
+       .newList_tab .leftStrap_icon{
+           display: inline-block;
+           width: 2rem;
+           height: 2rem;
+           background: url("imgs/circles.png") no-repeat center;
+           background-size: 1.5rem;
+       }
+       .newList_tab .rightStrap_icon{
+           display: inline-block;
+           width: 2rem;
+           height: 2rem;
+           background: url("imgs/circle.png") no-repeat center;
+           background-size: 1.5rem;
+       }
+       .newList_tab .newPadding{
+           float: right;
+           margin-right: 2rem;
+       }
+        .newList_tab .data-length{
+            position: relative;
+            top: -10px;
+        }
+        .newBottom{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 5rem;
+            border-top: 1px solid #c9c9c9;
+            background-color: rgba(255,255,255,.9);
+            z-index: 999;
+        }
+        .newBottom .newBtn-icon{
+            display: inline-block;
+            width: 5rem;
+            height: 5rem;
+            background: url("../imgs/che.png") no-repeat center;
+            background-size: 3rem;
+            float: left;
+        }
+       .newBottom .newBtn-icon span{
+           display: inline-block;
+           width: 1.3rem;
+           height: 1.3rem;
+           font-size: 1rem;
+           background-color: #f60000;
+           border-radius: 50%;
+           text-align: center;
+           line-height: 1.3rem;
+           color: #fff;
+           margin: 1rem 0 0 3rem;
+           float: left;
+       }
+       .newBottom .newRight{
+           float: right;
+           width: 9rem;
+           background-color: #f60000;
+           text-align: center;
+           line-height: 5rem;
+           color: #fff;
+       }
+        .newBottom .newLable{
+            display: inline-block;
+            height: 5rem;
+            line-height: 5rem;
+        }
+    </style>
+<script src="js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+   <section class="newConternet">
+        <header class="newHeader">家和超市</header>
+       <nav class="newContent">
+          <ul id="js-listOn">
+              <li class="active">低温冷冻</li>
+              <li>酒水饮料</li>
+              <li>休闲零食</li>
+              <li>牛奶乳品</li>
+              <li>油粮干调</li>
+              <li>个人护理</li>
+              <li>计生用品</li>
+              <li>五花八门</li>
+              <li>其他</li>
+          </ul>
+       </nav>
+       <section class="newFooter">
+           <div class="newList_tab" style="display: block;">
+               <p class="headerList"><em></em>低温冷冻</p>
+               <ul class="data-list">
+                   <li>
+                       <img class="data-icon" src="imgs/a.png" alt=""/>
+                       <section class="newFloat">
+                           <p>三全浓香芝麻汤圆-500g</p>
+                           <p>
+                               <span>销量:6份</span>
+                               <span class="newMargin">好评:5</span>
+                           </p>
+                           <p>
+                               <span>￥10.00</span>
+                               <span class="newPadding">
+                                   <span class="leftStrap_icon"></span>
+                                   <span class="data-length">1</span>
+                                   <span class="rightStrap_icon"></span>
+                               </span>
+                           </p>
+                       </section>
+                   </li>
+                   <li>
+                       <img class="data-icon" src="imgs/a.png" alt=""/>
+                       <section class="newFloat">
+                           <p>三全浓香芝麻汤圆-500g</p>
+                           <p>
+                               <span>销量:6份</span>
+                               <span class="newMargin">好评:5</span>
+                           </p>
+                           <p>
+                               <span>￥10.00</span>
+                               <span class="newPadding">
+                                   <span class="leftStrap_icon"></span>
+                                   <span class="data-length">1</span>
+                                   <span class="rightStrap_icon"></span>
+                               </span>
+                           </p>
+                       </section>
+                   </li>
+                   <li>
+                       <img class="data-icon" src="imgs/a.png" alt=""/>
+                       <section class="newFloat">
+                           <p>三全浓香芝麻汤圆-500g</p>
+                           <p>
+                               <span>销量:6份</span>
+                               <span class="newMargin">好评:5</span>
+                           </p>
+                           <p>
+                               <span>￥10.00</span>
+                               <span class="newPadding">
+                                   <span class="leftStrap_icon"></span>
+                                   <span class="data-length">1</span>
+                                   <span class="rightStrap_icon"></span>
+                               </span>
+                           </p>
+                       </section>
+                   </li>
+                   <li>
+                       <img class="data-icon" src="imgs/a.png" alt=""/>
+                       <section class="newFloat">
+                           <p>三全浓香芝麻汤圆-500g</p>
+                           <p>
+                               <span>销量:6份</span>
+                               <span class="newMargin">好评:5</span>
+                           </p>
+                           <p>
+                               <span>￥10.00</span>
+                               <span class="newPadding">
+                                   <span class="leftStrap_icon"></span>
+                                   <span class="data-length">1</span>
+                                   <span class="rightStrap_icon"></span>
+                               </span>
+                           </p>
+                       </section>
+                   </li>
+               </ul>
+           </div>
+           <div class="newList_tab">
+               <p class="headerList"><em></em>高温冷藏</p>
+               <ul class="data-list">
+                   <li>
+                       <img class="data-icon" src="imgs/a.png" alt=""/>
+                       <section class="newFloat">
+                           <p>三全浓香芝麻汤圆-500g</p>
+                           <p>
+                               <span>销量:6份</span>
+                               <span class="newMargin">好评:5</span>
+                           </p>
+                           <p>
+                               <span>￥10.00</span>
+                               <span class="newPadding">
+                                   <span class="leftStrap_icon"></span>
+                                   <span class="data-length">1</span>
+                                   <span class="rightStrap_icon"></span>
+                               </span>
+                           </p>
+                       </section>
+                   </li>
+                   <li>
+                       <img class="data-icon" src="imgs/a.png" alt=""/>
+                       <section class="newFloat">
+                           <p>三全浓香芝麻汤圆-500g</p>
+                           <p>
+                               <span>销量:6份</span>
+                               <span class="newMargin">好评:5</span>
+                           </p>
+                           <p>
+                               <span>￥10.00</span>
+                               <span class="newPadding">
+                                   <span class="leftStrap_icon"></span>
+                                   <span class="data-length">1</span>
+                                   <span class="rightStrap_icon"></span>
+                               </span>
+                           </p>
+                       </section>
+                   </li>
+                   <li>
+                       <img class="data-icon" src="imgs/a.png" alt=""/>
+                       <section class="newFloat">
+                           <p>三全浓香芝麻汤圆-500g</p>
+                           <p>
+                               <span>销量:6份</span>
+                               <span class="newMargin">好评:5</span>
+                           </p>
+                           <p>
+                               <span>￥10.00</span>
+                               <span class="newPadding">
+                                   <span class="leftStrap_icon"></span>
+                                   <span class="data-length">1</span>
+                                   <span class="rightStrap_icon"></span>
+                               </span>
+                           </p>
+                       </section>
+                   </li>
+                   <li>
+                       <img class="data-icon" src="imgs/a.png" alt=""/>
+                       <section class="newFloat">
+                           <p>三全浓香芝麻汤圆-500g</p>
+                           <p>
+                               <span>销量:6份</span>
+                               <span class="newMargin">好评:5</span>
+                           </p>
+                           <p>
+                               <span>￥10.00</span>
+                               <span class="newPadding">
+                                   <span class="leftStrap_icon"></span>
+                                   <span class="data-length">1</span>
+                                   <span class="rightStrap_icon"></span>
+                               </span>
+                           </p>
+                       </section>
+                   </li>
+               </ul>
+           </div>
+           <div class="newList_tab">
+               <p class="headerList"><em></em>低温冷冻</p>
+               <ul class="data-list">
+                   <li>
+                       <img class="data-icon" src="../imgs/a.png" alt=""/>
+                       <section class="newFloat">
+                           <p>三全浓香芝麻汤圆-500g</p>
+                           <p>
+                               <span>销量:6份</span>
+                               <span class="newMargin">好评:5</span>
+                           </p>
+                           <p>
+                               <span>￥10.00</span>
+                               <span class="newPadding">
+                                   <span class="leftStrap_icon"></span>
+                                   <span class="data-length">1</span>
+                                   <span class="rightStrap_icon"></span>
+                               </span>
+                           </p>
+                       </section>
+                   </li>
+                   <li>
+                       <img class="data-icon" src="../imgs/a.png" alt=""/>
+                       <section class="newFloat">
+                           <p>三全浓香芝麻汤圆-500g</p>
+                           <p>
+                               <span>销量:6份</span>
+                               <span class="newMargin">好评:5</span>
+                           </p>
+                           <p>
+                               <span>￥10.00</span>
+                               <span class="newPadding">
+                                   <span class="leftStrap_icon"></span>
+                                   <span class="data-length">1</span>
+                                   <span class="rightStrap_icon"></span>
+                               </span>
+                           </p>
+                       </section>
+                   </li>
+                   <li>
+                       <img class="data-icon" src="../imgs/a.png" alt=""/>
+                       <section class="newFloat">
+                           <p>三全浓香芝麻汤圆-500g</p>
+                           <p>
+                               <span>销量:6份</span>
+                               <span class="newMargin">好评:5</span>
+                           </p>
+                           <p>
+                               <span>￥10.00</span>
+                               <span class="newPadding">
+                                   <span class="leftStrap_icon"></span>
+                                   <span class="data-length">1</span>
+                                   <span class="rightStrap_icon"></span>
+                               </span>
+                           </p>
+                       </section>
+                   </li>
+                   <li>
+                       <img class="data-icon" src="../imgs/a.png" alt=""/>
+                       <section class="newFloat">
+                           <p>三全浓香芝麻汤圆-500g</p>
+                           <p>
+                               <span>销量:6份</span>
+                               <span class="newMargin">好评:5</span>
+                           </p>
+                           <p>
+                               <span>￥10.00</span>
+                               <span class="newPadding">
+                                   <span class="leftStrap_icon"></span>
+                                   <span class="data-length">1</span>
+                                   <span class="rightStrap_icon"></span>
+                               </span>
+                           </p>
+                       </section>
+                   </li>
+               </ul>
+           </div>
+       </section>
+       <footer class="newBottom">
+           <span class="newBtn-icon">
+               <span>2</span>
+           </span>
+           <span class="newLable">共计:<span style="color: #f60000;">￥20.00</span></span>
+           <a class="newRight">选好了</a>
+       </footer>
+   </section>
+</body>
+<script>
+//	var a = ['1','2','3','4'];
+//		a1 = ['aaaa','bbbb','ccccc','ddddd'];
+//		/*用什么方法变成 b  这样的格式呢*/
+//	var	b = [{'1':'aaaaa'},{'2':'bbbb'},{'3':'cccc'},{'4':'ddddd'},{'0':'aaa'},{'0':'aaa'},{'0':'aaa'}];
+//		
+//		JSON.stringify(json);
+//		
+//		
+//	var Narr =  new Array();
+//	for(var i in a ){
+//		for(var y in b){
+//		  Narr.push(a,b)
+//		}
+//	}
+//			console.log(Narr)
+	var s = "abc,abcd,aaa";
+		ss = s.split(",");// 在每个逗号(,)处进行分解。
+		
+		console.log(ss);
+    var $this = $('.newFooter');
+    $('#js-listOn').on('click','li',function(){
+        var $index = $(this).index();
+        $(this).addClass('active').siblings().removeClass('active');
+        $this.children('.newList_tab').hide();
+        $this.children('.newList_tab').eq($index).show();
+    })
+</script>
+</html>

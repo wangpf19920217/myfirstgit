@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="obj">
+			{{obj1}}
+		</div>
+		<example></example>
+		<script src="jquery-2.1.0.js"></script>
+		<script src="vue.js"></script>
+		<script>
+			var objects = {
+					obj1:'赵',
+					obj2:'钱',
+					obj3:'孙',
+					obj4:'李'
+			};
+			new Vue({
+				el:'#obj',
+				data:objects
+			});
+			
+			
+//			var example = new Vue({
+//			  data: {
+//			    a: 1
+//			  },
+//			  computed: {
+//			    b: function () {
+//			      return this.a + 1
+//			    }
+//			  }
+//			})
+//			console.log(example.a)
+
+
+var Example = Vue.extend({
+	  template: '<div>{{ message }}</div>',
+	  data: function () {
+	    return {
+	      message: 'Hello Vue.js!'
+	    }
+	  }
+});
+
+Vue.component('example', Example)
+		</script>
+	</body>
+</html>

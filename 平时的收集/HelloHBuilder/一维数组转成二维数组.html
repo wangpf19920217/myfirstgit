@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function change() {
+	            var arr1 = [10, 20, 30, 40, 50];
+	            var arr2 = new Array();
+	            for(var i=0;i<arr1.length;i++)
+	            {
+	                arr2.push(['id',arr1[i]]);
+	            }
+	            alert(arr2);//测试，弹出第一个元素
+	        }
+			change();
+			
+			var array = [10,20,30];
+			var alength = array.length;
+			for(var i=0;i<alength;i++)
+			{
+			array[i] = [(i+1),array[i]];
+			}
+		</script>
+	</body>
+</html>

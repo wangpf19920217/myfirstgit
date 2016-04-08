@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>jQuery UI 排序（Sortable） - 连接列表</title>
+  <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+  <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+  <style>
+  #sortable1, #sortable2 { list-style-type: none; margin: 0; padding: 0 0 2.5em; float: left; margin-right: 10px; }
+  #sortable1 li, #sortable2 li { margin: 0 5px 5px 5px; padding: 5px; font-size: 1.2em; width: 120px; }
+  </style>
+  <script>
+  $(function() {
+	
+    $( "#sortable1, #sortable2,#sortable3" ).sortable({
+      connectWith: ".connectedSortable",  //可拖拽的区域	
+      placeholder: "ui-state-highlight",  //占位元素
+      cursor: 'crosshair',  //拖拽时的光标
+      dropOnEmpty: true, 	//准许拖拽到空元素
+      helper: 'clone', 		//被拖拽的元素跟随鼠标
+      revert: true, 			//松开加动画
+      scroll: true,				//拖拽到边缘滚动条可滚动
+      start: function(event, ui) {
+      	  console.log('拖拽开始');
+      },
+      update: function(event, ui) { 
+	  	console.log('改变了XXX');
+      },
+      over: function(event, ui) { 
+      	console.log('刚进入新的sortable区域时');
+      },
+      out: function(event, ui){
+      	console.log('当一个元素拖拽移出sortable对象移出并进入另一个sortable对象后触发此事件。   ')
+      }
+    }).disableSelection().selectable();
+    
+    
+    
+  });
+  </script>
+</head>
+<body>
+ 
+<ul id="sortable1" class="connectedSortable">
+  <li class="ui-state-default">Item 1</li>
+  <li class="ui-state-default">Item 2</li>
+  <li class="ui-state-default">Item 3</li>
+  <li class="ui-state-default">Item 4</li>
+  <li class="ui-state-default">Item 5</li>
+</ul>
+ 
+<ul id="sortable2" class="connectedSortable">
+  <li class="ui-state-highlight">Item 1</li>
+  <li class="ui-state-highlight">Item 2</li>
+  <li class="ui-state-highlight">Item 3</li>
+  <li class="ui-state-highlight">Item 4</li>
+  <li class="ui-state-highlight">Item 5</li>
+</ul>
+
+<ul id="sortable3" class="connectedSortable" style="    list-style-type: none;border: 1px solid darkkhaki;width: 200px;margin: 0;padding: 0 0 2.5em;float: left;margin-right: 10px;background: darkblue; height: 10px;">
+
+</ul>
+ 
+ 
+ 
+</body>
+</html>

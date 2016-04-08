@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+	<ul id="items">
+	    <li>item 1</li>
+	    <li>item 2</li>
+	    <li>item 3</li>
+	</ul>
+	<ul class="items">
+	    <li>item 1</li>
+	    <li>item 2</li>
+	    <li>item 3</li>
+	</ul>
+	<ul class="items">
+	    <li>item 1</li>
+	    <li>item 2</li>
+	    <li>item 3</li>
+	</ul>
+	<script src="js/paixu.js"></script>
+	<script>
+		var el = document.getElementById('items');
+		new Sortable(el);
+		
+		
+		new Sortable(el, {
+		    group: "name",
+		    store: null, // @see Store
+		    handle: ".my-handle", // 点击目标元素约束开始
+		    draggable: ".item",   // 指定那些选项需要排序
+		    ghostClass: "sortable-ghost",
+		 
+		    onStart: function (/**Event*/evt) { // 拖拽
+		        var itemEl = evt.item;
+		    },
+		 
+		    onEnd: function (/**Event*/evt) { // 拖拽
+		        var itemEl = evt.item;
+		    },
+		 
+		    onAdd: function (/**Event*/evt){
+		        var itemEl = evt.item;
+		    },
+		 
+		    onUpdate: function (/**Event*/evt){
+		        var itemEl = evt.item; // 当前拖拽的html元素
+		    },
+		 
+		    onRemove: function (/**Event*/evt){
+		        var itemEl = evt.item;
+		    }
+		});
+	</script>
+	</body>
+</html>

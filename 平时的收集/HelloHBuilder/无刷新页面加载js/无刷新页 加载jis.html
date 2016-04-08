@@ -1,0 +1,219 @@
+<!--<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script id="s" src="js.js"></script>
+		<script src="../jquery-2.1.0.js"></script>
+		<script>
+			setInterval(function(){
+				$('#s').attr('src','jsjs.js');
+			},3000)
+		</script>
+	</body>
+</html>-->
+
+
+
+
+<!doctype html>
+<html>
+<style>
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.auto_hidden {
+    width:204px;border-top: 1px solid #333; 
+	border-bottom: 1px solid #333; 
+	border-left: 1px solid #333; 
+	border-right: 1px solid #333;
+	position:absolute;
+	display:none;
+}
+.auto_show {
+    width:204px;
+	border-top: 1px solid #333; 
+	border-bottom: 1px solid #333; 
+	border-left: 1px solid #333; 
+	border-right: 1px solid #333;
+	position:absolute;
+	z-index:9999; /* 设置对象的层叠顺序 */
+	display:block;
+}
+.auto_onmouseover{
+	color:#ffffff;
+    background-color:highlight;
+    width:100%;
+}
+.auto_onmouseout{
+    color:#000000;
+    width:100%;
+    background-color:#ffffff;
+}
+</style>
+<script language="javascript">
+<!--
+/*
+通用: 自动补全(仿百度搜索框)
+作者：nj-troy
+时间：2010-11-101
+*/
+
+//$('#box')
+//
+//$=function(box){
+//	
+//}
+
+// ! this.index = -1  从负一开始  有则是0  无则减到-1
+
+var $ = function (id) {
+	return "string" == typeof id ? document.getElementById(id) : id;
+}
+var Bind = function(object, fun) {
+	return function() {
+		return fun.apply(object, arguments);
+	}
+}
+/*										.start 是核心执行函数
+ 	传入input  当input keyup的时候运行方法.start（）   .start中 执行 样式 键盘 显示隐藏等方法 ;
+ 	传入展示的div 
+ 	传入搜索的对应数据
+ * 
+ * */
+//('o','auto',['b0','b12','b22','b3','b4','b5','b6','b7','b8','b2','abd','ab','acd','accd','b1','cd','ccd','cbcv','cxf']);
+function AutoComplete(obj,autoObj,arr){
+	this.obj=$(obj);        //输入框
+	this.autoObj=$(autoObj);//DIV的根节点
+	this.value_arr=arr;	    //不要包含重复值
+	this.index=-1;          //当前选中的DIV的索引
+	this.search_value="";   //保存当前搜索的字符
+}
+AutoComplete.prototype={
+    //初始化DIV的位置
+	init: function(){
+		this.autoObj.style.left = this.obj.offsetLeft + "px";   //显示区的lefe = 输入框的left
+		this.autoObj.style.top  = this.obj.offsetTop + this.obj.offsetHeight + "px";
+		this.autoObj.style.width= this.obj.offsetWidth - 2 + "px";//减去边框的长度2px	
+	},
+	//删除自动完成需要的所有DIV
+	deleteDIV: function(){
+		while(this.autoObj.hasChildNodes()){   // 判断当前元素是否拥有子节点  
+			this.autoObj.removeChild(this.autoObj.firstChild);
+		}
+		this.autoObj.className="auto_hidden";
+	},
+	//设置值
+	setValue: function(_this){
+		return function(){
+			_this.obj.value=this.seq;  //点击选择某一项    并隐藏展示元素
+			_this.autoObj.className="auto_hidden";
+		}		
+	},
+	//模拟鼠标移动至DIV时，DIV高亮
+	autoOnmouseover: function(_this,_div_index){
+		return function(){
+			_this.index=_div_index;  
+			var length = _this.autoObj.children.length;
+			for(var j=0;j<length;j++){ 
+				if(j!=_this.index ){		
+					_this.autoObj.childNodes[j].className='auto_onmouseout';
+				}else{
+					_this.autoObj.childNodes[j].className='auto_onmouseover';
+				}
+			}
+		}
+	},
+	//更改classname
+	changeClassname: function(length){
+		for(var i=0;i<length;i++){ 
+			if(i!=this.index ){		  
+				this.autoObj.childNodes[i].className='auto_onmouseout';
+			}else{
+				this.autoObj.childNodes[i].className='auto_onmouseover'; //鼠标进入  input的val = 当前的text
+				this.obj.value=this.autoObj.childNodes[i].seq;
+			}
+		}
+	}
+	,
+	//响应键盘
+	pressKey: function(event){
+		var length = this.autoObj.children.length;
+		//光标键"↓"
+		if(event.keyCode==40){
+			++this.index;
+			if(this.index>length){ 
+				this.index=0; 
+			}else if(this.index==length){
+				this.obj.value=this.search_value;
+			}
+			this.changeClassname(length);
+		}
+		//光标键"↑"
+		else if(event.keyCode==38){
+			this.index--;
+			if(this.index<-1){
+				this.index=length - 1;
+			}else if(this.index==-1){
+				this.obj.value=this.search_value;
+			}
+			this.changeClassname(length);
+		}
+		//回车键
+		else if(event.keyCode==13){
+			this.autoObj.className="auto_hidden";
+			this.index=-1;
+		}else{
+			this.index=-1;
+		}
+	},
+	//程序入口
+	start: function(event){
+		if(event.keyCode!=13&&event.keyCode!=38&&event.keyCode!=40){
+			this.init();  //初始化显示区
+			this.deleteDIV();  // 判断删除条件
+			this.search_value=this.obj.value;  //元素的value
+			var valueArr=this.value_arr;
+			valueArr.sort();
+			if(this.obj.value.replace(/(^\s*)|(\s*$)/g,'')==""){ return; }//值为空，退出
+				
+			try{ var reg = new RegExp("(" + this.obj.value + ")","i");}  //全局匹配输入值
+			catch (e){ console.log(e); }
+			var div_index=0;//记录创建的DIV的索引
+		/*//
+		console.log(valueArr); // 遍历要匹配的数据
+			*/
+			for(var i=0;i<valueArr.length;i++){
+				if(reg.test(valueArr[i])){  	// var reg = new RegExp("(" + this.obj.value + ")","i");  用正则test来匹配输入的内容
+					var div = document.createElement("div");  //如果匹配 则 创建 添加class 
+					div.className="auto_onmouseout";
+					div.seq=valueArr[i];
+					div.onclick=this.setValue(this);
+					div.onmouseover=this.autoOnmouseover(this,div_index);
+					div.innerHTML=valueArr[i].replace(reg,"<strong>$1</strong>");//搜索到的字符粗体显示
+					this.autoObj.appendChild(div);
+					this.autoObj.className="auto_show";
+					div_index++;
+				}
+			}
+		}
+		this.pressKey(event);
+		window.onresize=Bind(this,function(){this.init();});
+	}
+}
+//-->
+</script>
+<body>
+<h1 align="center">自动完成函数(Autocomplete Function)</h1>
+	<div align="center"><input type="text" style="width:300px;height:20px;font-size:14pt;" id="o" onkeyup="autoComplete.start(event)"></div>
+	<div class="auto_hidden" id="auto"><!--自动完成 DIV--></div>
+<script>
+	var autoComplete=new AutoComplete('o','auto',['b0','b12','b22','b3','b4','b5','b6','b7','b8','b2','abd','ab','acd','accd','b1','cd','ccd','cbcv','cxf']);
+</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/video.css"/>
+	<style type="text/css">
+	</style>
+			<script src="js/video.js"></script>		
+</head>
+<body>
+	<form id="for">
+		<input	type="text" />
+		<input	type="text" />
+		<input	type="text" />
+		<input	type="text" />
+		<input	type="text" />
+		<input	type="text" />
+		<input	type="text" />
+	</form>
+	<button id="btn">
+		查看
+	</button>
+	<div id="page-wrap">
+
+	<h1>Lava Lamp Style Navigation Design</h1>
+
+	<p>具有Lava Lamp效果的滑动导航条的设计灵感源于熔岩等(Lava Lamp)。<br/>
+
+	在熔岩灯的玻璃瓶体内装有特制的水溶液与蜡质固体，底部灯泡点亮后形成热量，传递到玻璃瓶，瓶底蜡质受热融化变轻，便会徐徐上升，到了顶部重新冷却又徐徐下降，不断重复，其独特的功能和独特的视觉享受令人心旷神怡，多姿多彩的状态时而如少女，时而像火山爆发般狂热。</p>
+
+	<nav id="navigation">
+
+		<ul class="cleafix">
+
+			<li class="focus"><a href="#">Home</a></li>
+
+			<li><a href="#">Interview - yamoo9</a></li>
+
+			<li><a href="#">Lecture Open</a></li>
+
+			<li><a href="#">Lecture DVD</a></li>
+
+			<li><a href="#">WeBlog</a></li>
+
+			<li><a href="#">Contact</a></li>
+
+		</ul>
+
+	</nav>
+
+</div>
+
+
+	
+<!--	      poster="http://video-js.zencoder.com/oceans-clip.png"-->
+<div style="position: relative;  width: 400px; overflow: hidden;">
+	<div style="position: absolute; z-index: 10000; color: white;">
+		<marquee>简易小弹幕</marquee>
+		<marquee>评论列表</marquee>
+		<marquee>top随机</marquee>
+		<marquee>延迟执行 随机</marquee>
+		<marquee>学习嘻嘻嘻嘻嘻嘻嘻嘻嘻</marquee>
+		<marquee>反反复复反反复复反反复复反反复复反反复复反反复复反反复复反反复复反反复复</marquee>
+		<marquee>简易小弹幕</marquee>
+		<marquee>评论列表</marquee>
+		<marquee>top随机</marquee>
+		<marquee>延迟执行 随机</marquee>
+		<marquee>学习嘻嘻嘻嘻嘻嘻嘻嘻嘻</marquee>
+		<marquee>反反复复反反复复反反复复反反复复反反复复反反复复反反复复反反复复反反复复</marquee>
+		<marquee>简易小弹幕</marquee>
+		<marquee>评论列表</marquee>
+		<marquee>top随机</marquee>
+		<marquee>延迟执行 随机</marquee>
+		<marquee>学习嘻嘻嘻嘻嘻嘻嘻嘻嘻</marquee>
+		<marquee>反反复复反反复复反反复复反反复复反反复复反反复复反反复复反反复复反反复复</marquee>
+	</div>
+	<video id="example_video_1" src="img/1.mp4" class="video-js vjs-default-skin" controls preload="none" width="400"
+	      data-setup="{}">
+	</video>	
+</div>
+	
+	<script src="js/jquery-2.1.0.js"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script src="js/daohang.js"></script>
+		<script>
+		    videojs.options.flash.swf = "img/1.mp4";
+		</script>
+		<script type="text/javascript">  
+		/*自动播放*/
+		    var myPlayer = videojs('example_video_1');
+		    videojs("example_video_1").ready(function(){
+		        var myPlayer = this;
+		        myPlayer.play();
+		    });
+		</script>
+		
+		<script>
+				(function($){
+					$(function(){
+						$('#navigation').lavalamp({
+							gap:15,
+							easeinel:'easeInOutCirc',				////设置options.easing为ease InOutElastic
+							ease:''
+						});
+					});
+				})(jQuery);
+		</script>
+		<script>
+		var $for = $('#for'),
+			Oinput = $for.children();
+			$('#btn').on('click',function(){
+				$.each(Oinput, function(v,i) {
+					console.log(i.value);
+				});
+			})
+			
+		</script>
+</body>
+</html>

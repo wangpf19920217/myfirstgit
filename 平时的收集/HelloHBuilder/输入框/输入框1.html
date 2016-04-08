@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="txt" />
+		<script src="../jquery-2.1.0.js"></script>
+		<script>
+		var words = ["amani","abc","apple","abstract","an","bike","byebye", 
+"beat","be","bing","come","cup","class","calendar","china"]; 
+
+			$('#txt').on('input propertychange',function(){
+				var $t = $(this).val();
+				console.log($t);
+				var $tlen = $t.length;
+				var $ul = $('<ul></ul>');
+				var str = retcont().toString();
+				$ul.remove();
+				$ul.html(str).appendTo('body');
+			})
+			
+			function  retcont(t,l){
+				for(var i in words ){
+					console.log(words[i])
+					html='<li>1</li>'
+//					if(t.indexof(words[i])){
+//						html = '<li>'+words[i]+'</li>'
+//					}
+				}
+				return html;
+			}
+			
+		</script>
+	</body>
+</html>

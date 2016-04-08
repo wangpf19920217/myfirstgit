@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="http://www.zhangxinxu.com/study/css/smartMenu.css" type="text/css" />
+	<style type="text/css">
+		#smartdemo3 {
+                width: 660px;
+                height: 170px;
+                overflow: hidden;
+                border:2px solid #444444;
+                margin: 0;
+            }
+            #smartdemo3 li{
+                width: 844px;
+                height: 170px;
+            }
+            #smartdemo3 .content {
+                padding: 0 105px;
+                color: #fff;
+                text-shadow: 0 0 8px #000000;
+            }
+	</style>
+	<body>
+		 <ul id="smartdemo3">
+            <li><img src="mindscape/mindscape1.png" /></li>
+            <li><img src="mindscape/mindscape2.png" /></li>
+            <li>
+            	
+            </li>
+        </ul>
+        
+        
+        <table id="tab0" width="100%" border="1" cellspacing="0" cellpadding="0">
+              <tbody><tr>
+                <th width="6%" scope="col"><input type="checkbox" checked="checked"></th>
+                <th width="15%" scope="col">发件人</th>
+                <th width="66%" scope="col">主题</th>
+                <th width="13%" scope="col">时间</th>
+              </tr>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>MiFan.me</td>
+                <td><span id="subject">欢迎注册Mifan.me!</span></td>
+                <td>5月27日</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>豆瓣网</td>
+                <td>请激活您的账号，完成注册 </td>
+                <td>5月26日</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>SlideShare</td>
+                <td><div> <span id="subject2">Follow-up comment on 'ss-2670845'</span></div>
+                <div id="tagContainer" ck="tag"> </div></td>
+                <td>5月26日</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>点点网</td>
+                <td>欢迎来到点点网</td>
+                <td>5月26日</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>zhangxinxu</td>
+                <td>[-]请审核：“”</td>
+                <td>5月26日</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>-宏达</td>
+                <td>回复：到你了，写写吧</td>
+                <td>5月24日</td>
+              </tr>
+            </tbody>
+        </table>
+        
+        <br />
+         <table id="tab1" width="100%" border="1" align="center" cellspacing="0" cellpadding="0">
+              <tbody>
+              	<tr>
+              		<td>
+              			1
+              		</td>
+              		<td>
+              			2
+              		</td>
+              		<td>
+              			3
+              		</td>
+              		<td>
+              			4
+              		</td>
+              	</tr>
+            </tbody>
+        </table>
+        
+        
+		
+		<script src="js/jquery.js"></script>
+		<script type="text/javascript" src="http://www.zhangxinxu.com/study/js/jquery-smartMenu.js"></script>
+		<script src="js/jquery.smart3d.js"></script>
+		<script>
+			 $(document).ready(function() {
+                $('#smartdemo3').smart3d({ last_is_static: true });
+//              $("#smartdemo3").smartMenu();
+            });
+		</script>
+		
+		
+		
+		<script>
+var chkSingle = $("th input"), chkGroup = $("td input");
+//选中样式切换
+var funTrStyle = function() {
+    chkGroup.each(function() {
+        if ($(this).attr("checked")) {
+            $(this).parents("tr").addClass("bg");    
+        } else {
+            $(this).parents("tr").removeClass("bg");    
+        }
+    });
+}, funTrGet = function() {
+    return $("td input:checked").parents("tr");
+};
+//全反选
+chkSingle.bind("click", function() {
+    if ($(this).attr("checked")) {
+        chkGroup.attr("checked", "checked");
+    } else {
+        chkGroup.attr("checked", "");
+    }
+    funTrStyle();    
+});
+chkGroup.bind("click", funTrStyle);
+funTrStyle();
+
+//自定义右键上下文
+//数据
+var objDelete = {
+    text: "移出",
+    func: function() {
+       confirm('确认移出吗');
+    }    
+}, objRubbish = {
+    text: "添加",
+    func: function() {
+     	var thd = '<tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>';
+		$(this).after(thd);
+		//重新遍历 获取集合
+    }    
+},  objSend = {
+    text: "移动到",
+    data: [
+        [{
+            text: "精选",
+            func: function() {
+            	$('#tab1').append($(this));
+                 alert("执行移动");  
+            }
+        }, {
+            text: "推荐",
+            func: function() {
+                alert("执行移动");  
+            }
+        }, {
+            text: "连载",
+            func: function() {
+                alert("执行移动");  
+            }
+        }], [{
+            text: "今日无大事",
+            func: function() {
+                alert("执行移动");    
+            }
+        }]
+    ]
+};
+var mailMenuData = [
+    [objDelete, objRubbish,objSend]
+];
+
+//绑定
+
+$("tr").smartMenu(mailMenuData, {
+    name: "mail",
+    beforeShow: function() {
+        //右键选中当前行  
+        $(this).find("input").attr("checked", "checked");    
+        funTrStyle();
+        
+        //动态数据，及时清除
+        $.smartMenu.remove();
+        
+    }
+});
+</script>
+		
+		
+	</body>
+</html>
